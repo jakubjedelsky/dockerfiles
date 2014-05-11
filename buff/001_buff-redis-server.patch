@@ -1,0 +1,20 @@
+diff --git app.py app.py
+index 4c86e61..697bd11 100755
+--- app.py
++++ app.py
+@@ -1,4 +1,4 @@
+-import hashlib, datetime
++import hashlib, datetime, os
+ 
+ from bottle import (get, post, request, run, default_app, app, install,
+             redirect, TEMPLATE_PATH, jinja2_template as template)
+@@ -6,7 +6,8 @@ import bottle_redis, jsonpickle, requests
+ 
+ from bs4 import BeautifulSoup
+ 
+-plugin = bottle_redis.RedisPlugin(host='localhost')
++redis_host = os.getenv('DB_PORT_6379_TCP_ADDR', 'localhost')
++plugin = bottle_redis.RedisPlugin(host=redis_host)
+ install(plugin)
+ 
+ KEY_IN, KEY_READ, KEY_LINKS = 'BUFF_in', 'BUFF_read', 'BUFF_links'
