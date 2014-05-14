@@ -1,7 +1,6 @@
-FROM centos
+FROM mattdm/fedora
 
 RUN yum -y update
-RUN yum -y localinstall http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 RUN yum -y install python python-libs python-virtualenv gcc git patch
 RUN yum clean all
 
