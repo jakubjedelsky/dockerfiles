@@ -1,4 +1,11 @@
-Dockerfile for building MariaDB (mysql) database sever under Fedora.
+Description:
+Dockerfile for building MariaDB (mysql) database sever under Fedora. It
+prepares DB directory under container's /var/lib/mysql, but you can use your
+on volume with just mount it to this place.
+
+Usage:
+docker build -t mariadb .
+docker run -d -p 3306:3306 -v /data/mariadb:/var/lib/mysql mariadb
 
 Known bugs:
 - a serious one: can't login from another machines :)
