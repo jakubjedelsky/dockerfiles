@@ -1,0 +1,4 @@
+Dockerfile for building MariaDB (mysql) database sever under Fedora.
+
+Known bugs:
+- a serious one: can't login from another machines :)
