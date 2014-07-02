@@ -1,7 +1,7 @@
 Description:
 Dockerfile for building MariaDB (mysql) database sever under Fedora. It
 prepares DB directory under container's /var/lib/mysql, but you can use your
-on volume with just mount it to this place.
+own volume and just mount it to this place.
 
 You can use env variables for define default user and its password:
 MYSQL_USER (default: root)
@@ -11,8 +11,9 @@ Usage:
 docker build -t mariadb .
 # use default credentials
 docker run -d -p 3306:3306 mariadb
-# use own credentials
+# use own credentials and volume
 docker run -d -p 306:3306 \
   -e MYSQL_USER="admin" \
   -e MYSQL_PASSWORD="SecretPass" \
+  -v /data/mariadb:/var/lib/mysql
   mariadb
