@@ -1,8 +1,11 @@
 FROM mattdm/fedora
+MAINTAINER "Jakub Jedelsky" <jakub.jedelsky@gmail.com>
 
 RUN yum -y update
 RUN yum -y install mariadb-server
-RUN /usr/libexec/mariadb-prepare-db-dir
+RUN yum clean all
+
+ADD rundb.sh /usr/bin/rundb.sh
 
 EXPOSE 3306
-CMD ["/usr/bin/mysqld_safe","--basedir=/usr"]
+CMD ["/usr/bin/rundb.sh"]
