@@ -10,6 +10,7 @@ function shut_down() {
 }
 
 function install_vertica() {
+    # Magic!
     local IP='localhost'
     if [[ $1 ]] ; then
         IP=$1
@@ -33,11 +34,11 @@ trap "shut_down" SIGKILL SIGTERM SIGHUP SIGINT EXIT
 
 # TODO:
 # obtain container's ip and install it there (for cluster support). But a new
-# container (after restart) has a different ip. Thus we install it just on
-# localhost now.
+# container (eg. after restart or new container with persistent data) has a
+# different ip. Thus we install it just on localhost now.
 ip="localhost"
 
-if [ -z "$(ls -A "$VERTICADATA")" ]; then
+if [ -z "$(ls -A "$VERTICADATA/$DBNAME")" ]; then
     echo "Creating database"
     install_vertica $ip
     su $DBUSER -c "/opt/vertica/bin/admintools -t create_db -s $ip -d $DBNAME -D $VERTICADATA"
