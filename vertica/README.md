@@ -20,9 +20,9 @@ You can mount persistent volume ...
 docker run -d -p 5433:5433 -v /tmp/vertica:/data -i vertica
 ```
 
-... and specify your database name ~~and user~~:
+... and specify your database name and user:
 ```bash
-docker run -d -p 5433:5433 -e DBNAME=supertruperdatabase -i vertica
+docker run -d -p 5433:5433 -e DBNAME=supertruperdatabase -e DBUSER=vrrrrtica -i vertica
 ```
 ## Connect
 ```bash
